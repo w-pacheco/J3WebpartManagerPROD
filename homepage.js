@@ -1,3 +1,8 @@
+/**
+ * homepage.js
+ * @author John W. Westhuis
+ */
+
 function ShowBody(el, selector) {
     let parent = el.parentElement
     let body = parent.querySelector(selector)
@@ -11,11 +16,11 @@ function ShowBody(el, selector) {
 }
 
 (function(){
+
     const appWebUrl = _spPageContextInfo.webAbsoluteUrl + '/';
 
-
     getListItem("Layout", "?$orderby=WebpartOrder").then(webparts => {
-        console.log("success", webparts);
+        // console.log("success", webparts);
         const leftGroup = document.getElementById("left-group")
         const rightGroup = document.getElementById("right-group")
 
@@ -29,7 +34,6 @@ function ShowBody(el, selector) {
         console.log("error", e)
     })
 
-
     function BuildWebPart(type) {
 
         let div = document.createElement("div");
@@ -42,8 +46,7 @@ function ShowBody(el, selector) {
             }
 
             if (type === "WebpartContent") {
-                console.log("Creating Title", webpartData)
-
+                // console.log("Creating Title", webpartData)
                 div.innerHTML =
                     `<div class="title-group component-group">
                         
@@ -65,8 +68,7 @@ function ShowBody(el, selector) {
             }
 
             else if (type === "Carousel") {
-                console.log("Creating Carousel", webpartData)
-
+                // console.log("Creating Carousel", webpartData)
                 div.innerHTML =
                     `<style>
                         .carousel-control-next-icon,
@@ -158,8 +160,7 @@ function ShowBody(el, selector) {
 
             else if (type === "ContentElement") {
 
-                console.log("Creating Content", webpartData)
-
+                // console.log("Creating Content", webpartData)
                 div.innerHTML =
                     `<div class="text-group component-group">
                         
@@ -183,8 +184,7 @@ function ShowBody(el, selector) {
             else if (type === "Staff") {
 
                 //Leader
-                console.log("Creating Staff", webpartData)
-
+                // console.log("Creating Staff", webpartData)
                 let MainPOC = webpartData.filter(data => !!data.MainPOC)
                 if (!!MainPOC.length) {
 
@@ -296,8 +296,7 @@ function ShowBody(el, selector) {
 
             else if (type === "Announcements") {
 
-                console.log("Creating Announcements", webpartData)
-
+                // console.log("Creating Announcements", webpartData)
                 div.innerHTML =
                     `<div class="announcement-group component-group">
                         <div class="announcement-title component-title">Operation Announcements</div>
@@ -331,15 +330,11 @@ function ShowBody(el, selector) {
 
                 })
 
-
-
-
             }
 
             else if (type === "Events") {
 
-                console.log("Creating Events", webpartData)
-
+                // console.log("Creating Events", webpartData)
                 div.innerHTML =
                     `<div class="event-group component-group">
                         <div class="event-title component-title">Operation Events</div>
@@ -377,8 +372,7 @@ function ShowBody(el, selector) {
 
             else if (type === "MainLinks") {
 
-                console.log("Creating MainLinks", webpartData)
-
+                // console.log("Creating MainLinks", webpartData)
                 div.innerHTML =
                     `<div class="buttons-group component-group mt-4 px-3 d-flex justify-content-center">
             
@@ -410,14 +404,11 @@ function ShowBody(el, selector) {
 
                 })
 
-
             }
 
             else if (type === "BranchLinks") {
 
-                console.log("Creating BranchLinks", webpartData)
-
-
+                // console.log("Creating BranchLinks", webpartData)
                 div.innerHTML =
                     `<div class="BranchLinks-group component-group mt-4 px-3 d-flex">
             
@@ -480,7 +471,6 @@ function ShowBody(el, selector) {
 
     }
 
-
     function getListItem(listName, filter) {
         return new Promise((resolve, reject) => {
             let reqExecutor = new SP.RequestExecutor(appWebUrl);
@@ -502,6 +492,4 @@ function ShowBody(el, selector) {
         })
     }
 
-
-    
 })();

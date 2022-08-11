@@ -194,7 +194,7 @@ const checkIcon = /*svg*/`
             Route,
         })
 
-        SettingsPanel.classList = 'text-right';
+        SettingsPanel.classList = 'text-right mb-2';
         SettingsPanel.innerHTML = /*html*/`
         <a class="m-1" href="${Web.Url}" target="_blank">Home</a>
         <a class="m-1" href="${Web.Url}/_layouts/15/viewlsts.aspx" target="_blank">Site Contents</a>

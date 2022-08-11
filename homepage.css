@@ -1,4 +1,4 @@
-/* template.css */
+/* homepage.css */
 
 :root {
     --j3Blue: #0f5293;
@@ -93,7 +93,7 @@
 
 .btn-custom {
     border: 2px solid white;
-    color: white;
+    color: white !important;
     background-color: var(--j3Blue);
 }
 

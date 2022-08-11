@@ -1,9 +1,15 @@
+/**
+ * custom.js
+ * @desctipion Used to add custom webparts to an out of the box Microsoft SharePoint site.
+ * @author Wilfredo Pacheco
+ */
+
 (function(){
     
     document.addEventListener('DOMContentLoaded', function init(event){
 
-        console.info('jQuery:', $?.fn?.jquery);
-        console.info('Bootstrap:', $?.fn?.tooltip?.Constructor?.VERSION);
+        // console.info('jQuery:', $?.fn?.jquery);
+        // console.info('Bootstrap:', $?.fn?.tooltip?.Constructor?.VERSION);
     
         const { pathname } = location;
         const SP_HEADER = document.querySelector('#s4-bodyContainer > div.CompleteArea > header');
@@ -174,8 +180,8 @@
                 ContainerEl.innerHTML = /*html*/`
                 <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Boostrap5/bootstrap.min.css">
                 <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/homepage.css">
-                <script type="text/javascript">${BootstrapJS}</script>
                 <script type="text/javascript">${RequestExecutorJS}</script>
+                <script type="text/javascript">${BootstrapJS}</script>
                 ${HOMEPAGEBODY}
                 <script type="text/javascript">${homepageJS}</script>`
             }

@@ -17,7 +17,7 @@
     //load the SharePoint resources
     $(document).ready(function () {
         // get src of script we want to install/uninstall
-        srcurl = ($.getUrlVar("src") ? decodeURIComponent($.getUrlVar("src")) : 0) || "SiteAssets/custom.js";
+        srcurl = ($.getUrlVar("src") ? decodeURIComponent($.getUrlVar("src")) : 0) || "HomePageRepo/custom.js";
         srcsequence = 1000;
         $("#scriptlink-name").val(srcurl);
         $("#scriptlink-sequence").val(srcsequence);
@@ -297,7 +297,7 @@ button {
 
         <div class="left">
             <label for="scriptlink-id" style="display:block;float:left;width:165px;">ID (usually leave blank)</label>
-            <label for="scriptlink-name" style="display:block;float:left;width:315px;">Url (e.g. SiteAssets/custom.js)</label>
+            <label for="scriptlink-name" style="display:block;float:left;width:315px;">Url (e.g. HomePageRepo/custom.js)</label>
             <label for="scriptlink-sequence" style="display:block;float:left;width:165px;">Sequence (e.g. 1000)</label>
         </div>
         
