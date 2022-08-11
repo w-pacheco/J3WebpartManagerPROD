@@ -1,0 +1,255 @@
+/* template.css */
+
+:root {
+    --j3Blue: #0f5293;
+    --SPFooter: #051C48;
+}
+
+.main {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(218, 238, 255, 1) 100%);
+}
+
+.component-group {
+    padding-bottom: 20px;
+}
+
+.component-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--j3Blue);
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 45px !important;
+
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+    border-bottom-right-radius: 0rem !important;
+    border-bottom-left-radius: 1rem !important;
+}
+
+
+.title-group .main-title {
+    font-size: 1.5rem;
+}
+
+.title-group hr {
+    height: 3px;
+}
+
+.text-group .text-header {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-left: 13px
+}
+
+.director-text {
+    background: rgba(218, 238, 255, 1);
+    background: linear-gradient(72deg, rgba(218, 238, 255, 1) 0%, rgb(176 213 251) 100%);
+    margin-left: 45px;
+    min-height: 125px;
+}
+
+.director-group .director-image-circle {
+    background-position: center;
+    background-size: cover;
+    border: 5px solid white;
+    height: 125px;
+    width: 125px;
+    border-radius: 100%;
+    padding: 10px;
+    left: -60px;
+}
+
+.poc-card {
+    display: inline-flex;
+    padding: 5px 0px;
+    width: 450px;
+}
+
+.poc-body {
+    background-color: #b0d5fb;
+}
+
+.poc-card-title {
+    padding: 15px 5px;
+    margin: 5px;
+    background-color: var(--j3Blue);
+    color: white;
+    width: 174px;
+    text-align: center;
+}
+
+.buttons-group button {
+    display: block;
+    margin: 10px;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    border: 2px solid white;
+    background-color: var(--j3Blue);
+    color: white;
+}
+
+.btn-custom {
+    border: 2px solid white;
+    color: white;
+    background-color: var(--j3Blue);
+}
+
+.text-j3blue {
+    color: var(--j3Blue) !important;
+}
+
+.bg-j3blue {
+    background-color: var(--j3Blue) !important;
+}
+
+.text-SPFooter {
+    color: var(--SPFooter) !important;
+}
+
+.bg-SPFooter {
+    background-color: var(--SPFooter) !important;
+}
+
+svg.poc {
+    color: var(--j3Blue) !important;
+}
+
+.bd-callout.poc {
+    border-left-color: #007bff !important;
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.bd-callout {
+    border-left-color: #5bc0de !important;
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.director-name,
+.director-email,
+.director-phone {
+    padding-left: 8.25rem;
+}
+
+.f-12,
+.f12 {
+    font-size: 12px !important;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+/* Handle long user email names */
+a#send-email-main {
+    display: none;
+}
+
+a#send-email-sub {
+    display: inline;
+}
+
+@media (min-width: 1256px) {
+    a#send-email-main {
+        display: inline;
+    }
+
+    a#send-email-sub {
+        display: none;
+    }
+}
+
+.component-title {
+    padding: 0.5rem 1rem;
+}
+
+.announcement-header.component-title,
+.event-header.component-title {
+    cursor:pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0px !important;
+    border-bottom-left-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+}
+
+.announcement-header.component-title.active,
+.event-header.component-title:active {
+    border-bottom-right-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+.announcement-item {
+    border-radius:0px !important;
+    margin-bottom:0px !important;
+}
+.announcement-text-body,
+.event-text-body {
+    background-color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+}
+
+.branchLinks-icon {
+    background-color: #0f5293;
+    padding: 15px;
+    border-radius: 100%;
+    color: white;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+}
+
+.branchLinks-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #0f5293;
+    overflow-wrap: normal;
+}
+
+a.branchLink {
+    width: min-content;
+    padding: 20px;
+}
+.BranchLinks-group {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.director-image-circle.float-start {
+    left: 0px;
+}
+.director-title.component-title {
+    padding-left: 80px;
+    margin-left: 50px !important;
+}
+.director-text {
+    margin: 0px 0px 10px 0px;
+}
+.body-text {
+    margin: 0px 0px 10px 0px;
+    background: linear-gradient(72deg, rgba(218, 238, 255, 1) 0%, rgb(176 213 251) 100%);
+}
+.component-title {
+    margin-left: 0px !important;
+}
+.buttons-group a {
+    max-width: max-content;
+}
+.row {
+    --bs-gutter-x:0rem;
+}
