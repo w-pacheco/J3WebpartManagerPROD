@@ -1,3 +1,6 @@
+Home Page Repo Module
+=====================
+
 1. Create a wiki page in SitePages named `HomePage`
 2. Create a document library named HomePageRepo
 3. Add source code

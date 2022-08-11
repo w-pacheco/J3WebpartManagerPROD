@@ -58,7 +58,7 @@ function ShowBody(el, selector) {
                     let el = div.querySelector(".title-group")
                     el.innerHTML = el.innerHTML +
                         `<div class="main-title mt-3 bold">${ContentTitle}</div>
-                        <div class="sub-title">${SubTitle}</div>
+                        <div class="sub-title">${SubTitle || ''}</div>
                         <hr>`
                 })
 

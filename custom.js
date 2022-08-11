@@ -159,7 +159,7 @@
         {
             ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
             $(ContainerEl).empty(); /** Remove any HTML in the contianer element; */
-            
+
             window.onload = async function(){
                 const [
                     BootstrapJS,
@@ -181,8 +181,6 @@
             }
         }
         else console.info('custom.js | No content added.');
-    
-    
     });
 
 })();
