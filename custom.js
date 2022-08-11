@@ -138,7 +138,7 @@
 
                 <!-- Footer Element -->
 
-                <footer class="m-4 text-center f12">
+                <div class="m-4 text-center f12">
                     <p class="text-SPFooter">
                         <svg class="bi bi-building" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
@@ -151,16 +151,14 @@
                         </svg> Developed by <strong>DHA J-5 AED Knowledge Management</strong>
                     </p>
                     <p hidden="">© 2022 DHA J-5 AED Knowledge Management</p>
-                </footer>
+                </div>
             </div>
         </body>`
     
         if (pathname === '/sites/dos/J3/SitePages/HomePage.aspx')
         {
-            const H1_ELEMENT = ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
+            ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
             $(ContainerEl).empty(); /** Remove any HTML in the contianer element; */
-            console.info(ContainerEl);
-            console.info(_spPageContextInfo.webAbsoluteUrl)
             
             window.onload = async function(){
                 const [
@@ -180,8 +178,6 @@
                 <script type="text/javascript">${RequestExecutorJS}</script>
                 ${HOMEPAGEBODY}
                 <script type="text/javascript">${homepageJS}</script>`
-
-                console.info('Bootstrap:', $?.fn?.tooltip?.Constructor?.VERSION);
             }
         }
         else console.info('custom.js | No content added.');
