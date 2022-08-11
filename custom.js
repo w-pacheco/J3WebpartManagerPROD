@@ -164,23 +164,21 @@
         if (pathname === '/sites/dos/J3/SitePages/HomePage.aspx')
         {
             ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
-            $(ContainerEl).empty(); /** Remove any HTML in the contianer element; */
+            $(ContainerEl).empty(); /** Remove any HTML in the container element; */
 
             window.onload = async function(){
+
                 const [
                     BootstrapJS,
                     homepageJS,
-                    RequestExecutorJS,
                 ] = await Promise.all([
                     $.get(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Boostrap5/bootstrap.js`),
                     $.get(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/homepage.js`),
-                    $.get(`/_layouts/15/SP.RequestExecutor.js`),
                 ]);
 
                 ContainerEl.innerHTML = /*html*/`
                 <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Boostrap5/bootstrap.min.css">
                 <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/homepage.css">
-                <script type="text/javascript">${RequestExecutorJS}</script>
                 <script type="text/javascript">${BootstrapJS}</script>
                 ${HOMEPAGEBODY}
                 <script type="text/javascript">${homepageJS}</script>`

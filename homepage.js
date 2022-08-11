@@ -473,22 +473,17 @@ function ShowBody(el, selector) {
 
     function getListItem(listName, filter) {
         return new Promise((resolve, reject) => {
-            let reqExecutor = new SP.RequestExecutor(appWebUrl);
             let url = appWebUrl + `_api/web/lists/getByTitle('${listName}')/items` + (filter ? filter : "")
-            reqExecutor.executeAsync({
-                url: url,
-                method: "GET",
-                headers: {
-                    "Accept": "application/json; odata=verbose",
-                },
-                success: function (data) {
-                    data = JSON.parse(data.body);
-                    resolve(data.d.results)
-                },
-                error: function (data) {
-                    reject(data);
+            fetch(url, {
+                method: 'GET',
+                headers: { 
+                    "Content-Type": "application/json; charset=UTF-8", 
+                    "Accept": "application/json; odata=verbose" 
                 }
-            });
+            })
+            .then(data => data.json())
+            .then(data => resolve(data.d.results))
+            .catch(e => reject(e))
         })
     }
 

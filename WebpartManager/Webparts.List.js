@@ -298,7 +298,7 @@ export default [{
         },{
             Title: 'Body',
             FieldTypeKind: 3, // MLOT;
-            DefaultView: false,
+            DefaultView: true,
             Order: 1
         },{
             Title: 'EventDate',
@@ -308,7 +308,7 @@ export default [{
         },{
             Title: 'Expires',
             FieldTypeKind: 4, // Date;
-            DefaultView: false,
+            DefaultView: true,
             Order: 1
         }],
         predefinedData: []
@@ -335,7 +335,7 @@ export default [{
         },{
             Title: 'Body',
             FieldTypeKind: 3, // MLOT;
-            DefaultView: false,
+            DefaultView: true,
             Order: 1
         },{
             Title: 'EventDate',
@@ -345,7 +345,7 @@ export default [{
         },{
             Title: 'Expires',
             FieldTypeKind: 4, // Date;
-            DefaultView: false,
+            DefaultView: true,
             Order: 1
         }],
         predefinedData: []
@@ -423,44 +423,40 @@ export default [{
         'template-3',
     ]
 
-// },{
-//     title: 'TESTLIST',
-//     id: 'branch-links',
-//     schema: {
-//         list: {
-//             Title: 'TESTLIST',
-//             Description: 'Used to create branch link for the branch template.',
-//             BaseTemplate: 100,
-//         },
-//         fields: [{
-//             Title: 'BranchLinkTitle',
-//             FieldTypeKind: 2,
-//             DefaultView: true,
-//             Order: 1
-//         },{
-//             Title: 'LinkURL',
-//             FieldTypeKind: 2,
-//             DefaultView: true,
-//             Order: 1
-//         },{
-//             Title: 'BranchIcon',
-//             FieldTypeKind: 6,
-//             Choices: [
-//                 'File', 
-//                 'Folder', 
-//                 'MapMarker', 
-//                 'Binoculars', 
-//                 'OrgChart', 
-//                 'ClipBoard',
-//             ],
-//             DefaultView: true,
-//             Order: 1
-//         }],
-//         predefinedData: []
-//     },
-//     templates: [
-//         'All',
-//         'template-3',
-//     ]
+},{
+    title: 'Contact Info',
+    id: 'contact-info',
+    schema: {
+        list: {
+            Title: 'ContactInfo',
+            Description: 'Used to manage the contact info widget.',
+            BaseTemplate: 100,
+        },
+        fields: [{
+            Title: 'ContactTitle',
+            FieldTypeKind: 2,
+            DefaultView: true,
+            Order: 1
+        },{
+            Title: 'ContactInfo',
+            FieldTypeKind: 2,
+            DefaultView: true,
+            Order: 1
+        },{
+            Title: 'ContactIcon',
+            FieldTypeKind: 6,
+            Choices: [
+                'Phone', 
+                'Email', 
+            ],
+            DefaultView: true,
+            Order: 1
+        }],
+        predefinedData: []
+    },
+    templates: [
+        'All',
+        'template-3',
+    ]
 
 }];

@@ -1,4 +1,4 @@
-/* homepage.css */
+/* template.css */
 
 :root {
     --j3Blue: #0f5293;
@@ -252,4 +252,18 @@ a.branchLink {
 }
 .row {
     --bs-gutter-x:0rem;
+}
+
+.MainContentArea {
+    padding: 3px 2px 3px 3px !important;
+
+}
+
+.hrdtitle span a {
+    color: white !important;
+    font-size: 1.7rem;
+}
+
+.hdrmidoutersection {
+    display: block !important;
 }
