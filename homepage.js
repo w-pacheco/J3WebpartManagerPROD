@@ -111,9 +111,10 @@ function ShowBody(el, selector) {
                             ` <div class="carousel-item active" data-bs-interval="4000">
                                 <img src="${ImageURL}"
                                     width="100%" height="350">
-                                <div class="container">
-                                    ${LinkURL ? `<a href="${LinkURL}"><div class="carousel-caption text-start">${LinkText}</div> </a>` : `<div class="carousel-caption text-start">${LinkText}</div>`}
-                                </div>
+                                ${LinkText ? 
+                                    `<div class="container">
+                                        ${LinkURL ? `<a href="${LinkURL}"><div class="carousel-caption text-start">${LinkText}</div> </a>` : `<div class="carousel-caption text-start">${LinkText}</div>`}
+                                    </div>` : ""}
                             </div>`
                     }
                     else {
@@ -126,9 +127,10 @@ function ShowBody(el, selector) {
                                 ` <div class="carousel-item" data-bs-interval="4000">
                                     <img src="${ImageURL}"
                                         width="100%" height="350">
-                                    <div class="container">
-                                        ${LinkURL ? `<a href="${LinkURL}"><div class="carousel-caption text-start">${LinkText}</div> </a>` : `<div class="carousel-caption text-start">${LinkText}</div>`}
-                                    </div>
+                                        ${LinkText ? 
+                                            `<div class="container">
+                                                ${LinkURL ? `<a href="${LinkURL}"><div class="carousel-caption text-start">${LinkText}</div> </a>` : `<div class="carousel-caption text-start">${LinkText}</div>`}
+                                            </div>` : ""}
                                 </div>`
                     }
 
@@ -171,8 +173,8 @@ function ShowBody(el, selector) {
 
                     let el = div.querySelector(".text-group")
                     el.innerHTML = el.innerHTML +
-                        `<div class="text-header">${ContentCategory}</div>
-                        <div class="text-body container">${Description}</div>`
+                        `<div class="text-header">${ContentCategory || ""}</div>
+                        <div class="text-body container">${Description || ""}</div>`
                 })
 
             }
@@ -210,28 +212,30 @@ function ShowBody(el, selector) {
                                 <div class="director-image">
                                     <div class="director-image-circle float-start" style="background-color: white;background-image: url('${ImageURL ? ImageURL : appWebUrl + "_layouts/images/O14_person_placeHolder_192.png"}')"></div>
                                 </div>
-                                <div class="director-title component-title">${JobTitle}</div>
-                                <div class="director-name bold">${UserTitle}
-                                <a class="badge rounded-pill text-bg-primary" style="margin-left: 8px;" href="${LeadershipBioURL}">View Bio</a>
+                                <div class="director-title component-title">${JobTitle || ""}</div>
+                                <div class="director-name bold">${UserTitle || ""}
+                                ${LeadershipBioURL? `<a class="badge rounded-pill text-bg-primary" style="margin-left: 8px;" href="${LeadershipBioURL}">View Bio</a>` : ""}
                                 </div>
-                                <div class="director-phone">
-                                    <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;margin-right: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill poc" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"></path>
-                                            </svg>
-                                    </span>
-                                    <span class="pb-1">${Phone}</span>
-                                </div>
-                                <div class="director-email">
-                                    <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;margin-right: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-plus poc" viewBox="0 0 16 16">
-                                                <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"></path>
-                                                <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"></path>
-                                            </svg>
-                                    </span>
-                                    <a class="pb-1" id="send-email-main" href="mailto:${UserEmail}">${UserEmail}</a>
-                                    <a class="pb-1" id="send-email-sub" href="mailto:${UserEmail}">Send Email</a>
-                                </div>
+                                ${Phone? `<div class="director-phone">
+                                <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;margin-right: 6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill poc" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"></path>
+                                    </svg>
+                                </span>
+                                <span class="pb-1">${Phone}</span>
+                            </div>` 
+                            : ""}
+                                ${UserEmail? ` <div class="director-email">
+                                <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;margin-right: 6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-plus poc" viewBox="0 0 16 16">
+                                            <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"></path>
+                                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"></path>
+                                        </svg>
+                                </span>
+                                <a class="pb-1" id="send-email-main" href="mailto:${UserEmail}">${UserEmail}</a>
+                                <a class="pb-1" id="send-email-sub" href="mailto:${UserEmail}">Send Email</a>
+                            </div>` : ""}
+                               
                             </div>`
                     })
                 }
@@ -263,19 +267,23 @@ function ShowBody(el, selector) {
                         el.innerHTML = el.innerHTML +
                             `<div class="card card-body border-0 mb-1 text-left body-text" style="border-radius: 1.25rem!important;"><!-- Example POC -->
                                 <!-- Title -->
-                                <div class="text-j3blue text-start"><strong>${JobTitle}</strong></div>
+                                <div class="text-j3blue text-start"><strong>${JobTitle || ""}</strong></div>
                                 <!-- User Title -->
-                                <div class="bold">${UserTitle}</div>
+                                <div class="bold">${UserTitle || ""}</div>
                                 <!-- User Phone -->
-                                <div>
-                                    <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill poc" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"></path>
-                                        </svg>
-                                    </span>
-                                    <span class="pb-1">${Phone}</span>
-                                </div>
+
+                                ${Phone? `<div>
+                                <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill poc" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"></path>
+                                    </svg>
+                                </span>
+                                <span class="pb-1">${Phone}</span>
+                             </div>`: ""}
+                               
                                 <!-- User Email -->
+
+                                ${UserEmail? `
                                 <div>
                                     <span class="" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-plus poc" viewBox="0 0 16 16">
@@ -284,6 +292,13 @@ function ShowBody(el, selector) {
                                         </svg>
                                     </span>
                                     <a class="pb-1" href="mailto:${UserEmail}">${UserEmail}</a>
+                                </div>
+                            ` : ""}
+
+
+                                <div>
+                                    
+                                    
                                 </div>
                             </div>`
                     })
@@ -311,15 +326,15 @@ function ShowBody(el, selector) {
                         Expires,
                     } = data
 
-                    if (new Date() <= new Date(Expires)) {
+                    if (!Expires || new Date() <= new Date(Expires)) {
                         let el = div.querySelector(".announcement-body")
                         el.innerHTML = el.innerHTML +
                             `<div class="announcement-item card card-body border-0 text-left body-text">
                                 <div class="announcement-header component-title" onclick=ShowBody(this,'.announcement-text-body')>
                                     <div class="announcement-title">${AnnouncementTitle}</div>
-                                    <div class="announcement-text">${new Date(EventDate).toDateString()}</div>
+                                    <div class="announcement-text">${EventDate ? new Date(EventDate).toDateString() : ""}</div>
                                 </div>
-                                <div class="announcement-text-body" style="display:none">${Body}</div>
+                                <div class="announcement-text-body" style="display:none">${Body || ""}</div>
                             </div>`
 
                     }
@@ -349,15 +364,15 @@ function ShowBody(el, selector) {
                         Expires,
                     } = data
 
-                    if (new Date() <= new Date(Expires)) {
+                    if (!Expires || new Date() <= new Date(Expires)) {
                         let el = div.querySelector(".event-body")
                         el.innerHTML = el.innerHTML +
                             `<div class="event-item card card-body border-0 text-left body-text">
                                 <div class="event-header component-title" onclick=ShowBody(this,'.event-text-body')>
-                                    <div class="event-title">${EventTitle}</div>
-                                    <div class="event-text">${new Date(EventDate).toDateString()}</div>
+                                    <div class="event-title">${EventTitle ? EventTitle : ""}</div>
+                                    <div class="event-text">${EventDate ? new Date(EventDate).toDateString() : ""}</div>
                                 </div>
-                                <div class="event-text-body" style="display:none">${Body}</div>
+                                <div class="event-text-body" style="display:none">${Body? Body : ""}</div>
                             </div>`
 
                     }
@@ -383,7 +398,7 @@ function ShowBody(el, selector) {
 
                     let el = div.querySelector(".buttons-group")
                     el.innerHTML = el.innerHTML +
-                        `<a class="btn btn-custom btn w-100" href="${LinkURL}">
+                        `<a class="btn btn-custom btn w-100" href="${LinkURL ? LinkURL : "#"}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-link-45deg" viewBox="0 0 16 16">
                                 <path
@@ -422,19 +437,19 @@ function ShowBody(el, selector) {
                                                         <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"></path>
                                                         <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"></path>
                                                     </svg>`
-                    if (BranchIcon === "Folder") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+                    else if (BranchIcon === "Folder") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
                                                             <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"></path>
                                                         </svg>`
-                    if (BranchIcon === "MapMarker") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    else if (BranchIcon === "MapMarker") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
                                                         </svg>`
-                    if (BranchIcon === "Binoculars") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-binoculars" viewBox="0 0 16 16">
+                    else if (BranchIcon === "Binoculars") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-binoculars" viewBox="0 0 16 16">
                                                                 <path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"></path>
                                                             </svg>`
-                    if (BranchIcon === "OrgChart") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-diagram-3" viewBox="0 0 16 16">
+                    else if (BranchIcon === "OrgChart") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-diagram-3" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"></path>
                                                         </svg>`
-                    if (BranchIcon === "ClipBoard") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
+                    else if (BranchIcon === "ClipBoard") icon = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
                                                                 <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"></path>
                                                                 <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"></path>
                                                                 <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3Z"></path>
@@ -446,9 +461,9 @@ function ShowBody(el, selector) {
 
                     let el = div.querySelector(".BranchLinks-group")
                     el.innerHTML = el.innerHTML +
-                        `<a class="branchLink" class="" href="${LinkURL}">
+                        `<a class="branchLink" class="" href="${LinkURL? LinkURL : "#"}">
                             <div class="branchLinks-icon">${icon}</div>
-                            <div class="branchLinks-text">${BranchLinkTitle}</div>
+                            <div class="branchLinks-text">${BranchLinkTitle || ""}</div>
                         </a>`
 
                 })
@@ -456,6 +471,48 @@ function ShowBody(el, selector) {
             }
 
             else if (type === "ContactInfo") {
+
+                console.log("Creating Contact Info", webpartData)
+
+                div.innerHTML =
+                    `<div class="contact-info-group component-group">
+                        <div class="contact-info-title component-title">Contact Information</div>
+                        <div class="contact-info-body">
+                        
+                    </div>`
+                webpartData.forEach(data => {
+
+                    let {
+                        ContactInfo,
+                        ContactIcon,
+                        ContactTitle
+                    } = data
+                    let icon
+                    if (ContactIcon === "Phone") {
+                        icon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill poc" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"></path>
+                                </svg>`
+                    } 
+                    else if (ContactIcon === "Email") {
+                        icon = ` <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-plus poc" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"></path>
+                                    <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"></path>
+                                </svg>`
+                    }
+
+                    let el = div.querySelector(".contact-info-body")
+                    el.innerHTML = el.innerHTML +
+                    
+                        `
+                        <div class="contact-info-item">
+                        ${icon? `<span class="contact-icon" style="padding: 3px !important;border-radius: 50% !important;display: inline-flex;margin-right: 6px;">${icon}</span>` : ""}
+                            
+                            <span class="contact-title pb-1">${ContactTitle || ""}: </span>
+                            <span class="contact-info pb-1">${ContactInfo || ""} </span>
+                        </div>`
+
+
+                })
 
             }
 

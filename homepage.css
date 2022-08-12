@@ -186,7 +186,7 @@ a#send-email-sub {
 }
 
 .announcement-header.component-title.active,
-.event-header.component-title:active {
+.event-header.component-title.active {
     border-bottom-right-radius: 0rem !important;
     border-bottom-left-radius: 0rem !important;
 }
@@ -266,4 +266,32 @@ a.branchLink {
 
 .hdrmidoutersection {
     display: block !important;
+}
+a.badge.rounded-pill.text-bg-primary {
+    background-color: #0f5293;
+    color: white;
+}
+
+span.contact-tile {
+    font-weight: bold;
+}
+
+span.contact-icon {
+    background-color: #0f5293;
+    /* color: white !important; */
+}
+
+span.contact-icon svg {
+    color: white !important;
+    margin: 2px;
+}
+
+.contact-info-item {
+    padding: 5px 5px;
+}
+
+span.contact-info.pb-1 {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
 }
