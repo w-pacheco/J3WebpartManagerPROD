@@ -1,5 +1,10 @@
 Home Page Repo Module
 =====================
+
+<!-- This solution is a custom Javascript interface that mimics the creation of web parts available on Microsoft SharePoint. When an out of the box wiki page is created, the custom web parts are dynmically created and controlled from the lists created by the custom interface. This platform provides some templates to choose from when creating a custom home page. Users are not limited to the three templates provided, the interface allows for changes to any of the templates when once installed.
+select a template it filters the lists required for the selected template. -->
+
+
 <!-- https://info.health.mil/sites/dos/J3/HomePageRepo/Forms/AllItems.aspx -->
 
 

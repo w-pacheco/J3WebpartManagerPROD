@@ -19,6 +19,7 @@ function ShowBody(el, selector) {
 
     const appWebUrl = _spPageContextInfo.webAbsoluteUrl + '/';
 
+    console.info('Home Page | Start Creation.....');
     getListItem("Layout", "?$orderby=WebpartOrder").then(webparts => {
         // console.log("success", webparts);
         const leftGroup = document.getElementById("left-group")
@@ -54,6 +55,7 @@ function ShowBody(el, selector) {
                 webpartData.forEach(data => {
 
                     let {
+                        // ContentCategory,
                         ContentTitle,
                         SubTitle
                     } = data
@@ -166,14 +168,14 @@ function ShowBody(el, selector) {
                 webpartData.forEach(data => {
 
                     let {
-                        ContentCategory,
-                        ContentTitle, //What is this?
+                        // ContentCategory,
+                        ContentTitle,
                         Description,
                     } = data
 
                     let el = div.querySelector(".text-group")
                     el.innerHTML = el.innerHTML +
-                        `<div class="text-header">${ContentCategory || ""}</div>
+                        `<div class="text-header">${ContentTitle || ""}</div>
                         <div class="text-body container">${Description || ""}</div>`
                 })
 
@@ -198,12 +200,12 @@ function ShowBody(el, selector) {
                             UserEmail,
                             Phone,
                             JobTitle,
-                            MainPOC,
-                            SortOrder,
+                            // MainPOC,
+                            // SortOrder,
                             ImageURL,
-                            ImageDescription,
+                            // ImageDescription,
                             LeadershipBioURL,
-                            LeadershipBioDescription,
+                            // LeadershipBioDescription,
                         } = data
 
                         let el = div.querySelector(".director-group")
@@ -472,8 +474,7 @@ function ShowBody(el, selector) {
 
             else if (type === "ContactInfo") {
 
-                console.log("Creating Contact Info", webpartData)
-
+                // console.log("Creating Contact Info", webpartData)
                 div.innerHTML =
                     `<div class="contact-info-group component-group">
                         <div class="contact-info-title component-title">Contact Information</div>

@@ -193,9 +193,9 @@ export default [{
             BaseTemplate: 100,
         },
         fields: [{
-            Title: 'ContentCategory', // Should be either Mission or Vision;
+            Title: 'ContentCategory', // Currently not in use;
             FieldTypeKind: 2,
-            DefaultView: true,
+            DefaultView: false,
             Order: 1
         },{
             Title: 'ContentTitle',
@@ -259,9 +259,9 @@ export default [{
             DefaultView: true,
             Order: 1
         },{
-            Title: 'ImageDescription',
+            Title: 'ImageDescription', // Currently not in use;
             FieldTypeKind: 2,
-            DefaultView: true,
+            DefaultView: false,
             Order: 1
         },{
             Title: 'LeadershipBioURL',
@@ -269,9 +269,9 @@ export default [{
             DefaultView: true,
             Order: 1
         },{
-            Title: 'LeadershipBioDescription',
+            Title: 'LeadershipBioDescription', // Currently not in use;
             FieldTypeKind: 2,
-            DefaultView: true,
+            DefaultView: false,
             Order: 1
         }],
         predefinedData: []
