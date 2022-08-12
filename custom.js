@@ -11,10 +11,10 @@
         // console.info('jQuery:', $?.fn?.jquery);
         // console.info('Bootstrap:', $?.fn?.tooltip?.Constructor?.VERSION);
     
-        const { pathname } = location;
+        const { href } = location;
         const SP_HEADER = document.querySelector('#s4-bodyContainer > div.CompleteArea > header');
-        const ContainerEl = document.body.querySelector('div.MainContentArea');
-    
+        const ContainerEl = document.body.querySelector('div.MainContentArea') || document.querySelector('div#contentBox');
+
         function ModifyHeader(HeaderEl){
             if (!HeaderEl) throw new Error('Missing container element!');
             $(HeaderEl)?.fadeOut()?.hide();
@@ -161,28 +161,38 @@
             </div>
         </body>`
     
-        if (pathname === '/sites/dos/J3/SitePages/HomePage.aspx')
+        if (href.includes('HomePage.aspx'))
         {
-            ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
-            $(ContainerEl).empty(); /** Remove any HTML in the container element; */
+            window.addEventListener('load', async function(event){
 
-            window.onload = async function(){
+                /** Load jQuery; */
+                const script = document.createElement('script');
+                document.head.append(script);
+                script.innerHTML = await fetch(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/jquery-3.4.1.js`)
+                .then(content => content.text());
+
+                /** Change the header & empty the container element; */
+                try{
+                    ModifyHeader(SP_HEADER); /** Update the header with the seals & background; */
+                }catch(e){}
+                $(ContainerEl).empty(); /** Remove any HTML in the container element; */
 
                 const [
                     BootstrapJS,
                     homepageJS,
                 ] = await Promise.all([
-                    $.get(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Boostrap5/bootstrap.js`),
+                    $.get(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Bootstrap5/bootstrap.js`),
                     $.get(`${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/homepage.js`),
                 ]);
 
                 ContainerEl.innerHTML = /*html*/`
-                <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Boostrap5/bootstrap.min.css">
+                <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/Bootstrap5/bootstrap.min.css">
                 <link rel="stylesheet" href="${_spPageContextInfo.webAbsoluteUrl}/HomePageRepo/homepage.css">
-                <script type="text/javascript">${BootstrapJS}</script>
+                <script type="text/javascript" data-bootstrap>${BootstrapJS}</script>
                 ${HOMEPAGEBODY}
-                <script type="text/javascript">${homepageJS}</script>`
-            }
+                <script type="text/javascript" data-custom-home>${homepageJS}</script>`
+                console.info('custom.js | Content added.');
+            });
         }
         else console.info('custom.js | No content added.');
     });

@@ -147,11 +147,7 @@ function ShowBody(el, selector) {
                         <span class="visually-hidden">Next</span>
                     </button>`
 
-
-                    var myCarousel = document.querySelector('#myCarousel')
-                    var carousel = new bootstrap.Carousel(myCarousel)
-
-                    new bootstrap.Carousel(document.querySelector("#myCarousel"), {
+                    new bootstrap.Carousel(document.querySelector('#myCarousel'), {
                         interval: 2000,
                         wrap: true,
                     });
