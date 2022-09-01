@@ -312,7 +312,7 @@ function ShowBody(el, selector) {
                 // console.log("Creating Announcements", webpartData)
                 div.innerHTML =
                     `<div class="announcement-group component-group">
-                        <div class="announcement-title component-title">Operation Announcements</div>
+                        <div class="announcement-title component-title">Announcements</div>
                         <div class="announcement-body">
 
                             
@@ -350,7 +350,7 @@ function ShowBody(el, selector) {
                 // console.log("Creating Events", webpartData)
                 div.innerHTML =
                     `<div class="event-group component-group">
-                        <div class="event-title component-title">Operation Events</div>
+                        <div class="event-title component-title">Events</div>
                         <div class="event-body">
 
                             
