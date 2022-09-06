@@ -1,8 +1,19 @@
-/* template.css */
+/* hompage.css */
 
 :root {
+    
+    /* Default theme color variables */
     --j3Blue: #0f5293;
     --SPFooter: #051C48;
+
+    /* Clocks color variables */
+    --background: #ffffff;
+    --size: 150px;
+    --indicators: #2b2b2b;
+    --feature: #0f5293;
+    --backgrounddark: #303030;
+    --featuredark: #d9eeff;
+    --indicatorsdark: #ffffff;
 }
 
 .main {
@@ -10,10 +21,7 @@
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(218, 238, 255, 1) 100%);
 }
 
-.component-group {
-    padding-bottom: 20px;
-}
-
+.component-group { padding-bottom: 20px; }
 .component-title {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -28,16 +36,10 @@
     border-bottom-left-radius: 1rem !important;
 }
 
+.title-group .main-title { font-size: 1.5rem; }
+.title-group hr { height: 3px; }
 
-.title-group .main-title {
-    font-size: 1.5rem;
-}
-
-.title-group hr {
-    height: 3px;
-}
-
-
+/* New Carousel Caption Update */
 .carousel-caption {
     background-color: #000000ad;
     padding: 10px;
@@ -67,7 +69,6 @@
     padding: 10px;
     left: -60px;
 }
-
 
 .poc-card {
     display: inline-flex;
@@ -147,41 +148,22 @@ svg.poc {
 
 .director-name,
 .director-email,
-.director-phone {
-    padding-left: 8.25rem;
-}
+.director-phone { padding-left: 8.25rem; }
 
 .f-12,
-.f12 {
-    font-size: 12px !important;
-}
-
-.bold {
-    font-weight: bold !important;
-}
+.f12 { font-size: 12px !important; }
+.bold { font-weight: bold !important; }
 
 /* Handle long user email names */
-a#send-email-main {
-    display: none;
-}
-
-a#send-email-sub {
-    display: inline;
-}
+a#send-email-main { display: none; }
+a#send-email-sub { display: inline; }
 
 @media (min-width: 1256px) {
-    a#send-email-main {
-        display: inline;
-    }
-
-    a#send-email-sub {
-        display: none;
-    }
+    a#send-email-main { display: inline; }
+    a#send-email-sub { display: none; }
 }
 
-.component-title {
-    padding: 0.5rem 1rem;
-}
+.component-title { padding: 0.5rem 1rem; }
 
 .announcement-header.component-title,
 .event-header.component-title {
@@ -212,6 +194,7 @@ a#send-email-sub {
     border-top-right-radius: 0rem;
 }
 
+/* New Buttons CSS Update */
 .buttons-group a.btn-custom {
     margin: 10px;
     min-width: 150px;
@@ -243,96 +226,54 @@ a.branchLink {
     width: min-content;
     padding: 20px;
 }
+
 .BranchLinks-group {
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.director-image-circle.float-start {
-    left: 0px;
-}
+.director-image-circle.float-start { left: 0px; }
 .director-title.component-title {
     padding-left: 80px;
     margin-left: 50px !important;
 }
-.director-text {
-    margin: 0px 0px 10px 0px;
-}
+
+.director-text { margin: 0px 0px 10px 0px; }
 .body-text {
     margin: 0px 0px 10px 0px;
     background: linear-gradient(72deg, rgba(218, 238, 255, 1) 0%, rgb(176 213 251) 100%);
 }
-.component-title {
-    margin-left: 0px !important;
-}
-.buttons-group a {
-    max-width: max-content;
-}
-.row {
-    --bs-gutter-x:0rem;
-}
 
-.MainContentArea {
-    padding: 3px 2px 3px 3px !important;
-
-}
-
+.component-title { margin-left: 0px !important; }
+.buttons-group a { max-width: max-content; }
+.row { --bs-gutter-x:0rem; }
+.MainContentArea { padding: 3px 2px 3px 3px !important; }
 .hrdtitle span a {
     color: white !important;
     font-size: 1.7rem;
 }
 
-.hdrmidoutersection {
-    display: block !important;
-}
+.hdrmidoutersection { display: block !important; }
 a.badge.rounded-pill.text-bg-primary {
     background-color: #0f5293;
     color: white;
 }
 
-span.contact-tile {
-    font-weight: bold;
-}
-
-span.contact-icon {
-    background-color: #0f5293;
-    /* color: white !important; */
-}
-
+span.contact-tile { font-weight: bold; }
+span.contact-icon { background-color: #0f5293; }
 span.contact-icon svg {
     color: white !important;
     margin: 2px;
 }
 
-.contact-info-item {
-    padding: 5px 5px;
-}
-
+.contact-info-item { padding: 5px 5px; }
 span.contact-info.pb-1 {
     background-color: white;
     padding: 5px 10px;
     border-radius: 20px;
 }
 
-
-
-
-/* CLOCKS */
-  /* p {
-    color: #f4eed7;
-    font-size: 0.8em;
-    opacity: 0.75;
-  } */
-  :root {
-    --background: #ffffff;
-    --size: 150px;
-    --indicators: #2b2b2b;
-    --feature: #0f5293;
-    --backgrounddark: #303030;
-    --featuredark: #d9eeff;
-    --indicatorsdark: #ffffff;
-}
-
+/* New Clocks Update */
 .clock {
     height: var(--size);
     width: var(--size);
@@ -365,9 +306,9 @@ span.contact-info.pb-1 {
     border-radius: 1px;
 }
 
-.clock[data-day="PM"] .clock__hour, .clock[data-day="PM"] .clock__minute,  .clock[data-day="PM"] .clock__second {
-    background: var(--indicatorsdark);
-}
+.clock[data-day="PM"] .clock__hour, 
+.clock[data-day="PM"] .clock__minute,  
+.clock[data-day="PM"] .clock__second { background: var(--indicatorsdark); }
 
 .clock__second {
     height: calc( (var(--size) / 2) - 10px );
@@ -377,26 +318,26 @@ span.contact-info.pb-1 {
     z-index: 3;
 }
 
-.clock[data-day="PM"] .clock__second {
-    background: var(--featuredark);
-}
-
+.clock[data-day="PM"] .clock__second { background: var(--featuredark); }
 .clock__minute {
     height: calc( (var(--size) / 2) - 20px );;
     margin-top: 20px;
     opacity: 0.75;
     animation: time 3600s linear infinite;
 }
+
 .clock__hour {
     height: calc( (var(--size) / 2) - 40px );;
     margin-top: 40px;
     animation: time 43200s linear infinite;
 }
+
 .clock__indicator {
     height: calc( (var(--size) / 2) - 7px );;
     border-top: 2px solid var(--feature);
     background: none;
 }
+
 .clock[data-day="PM"] .clock__indicator {
     border-top: 2px solid var(--featuredark);
 }
@@ -406,9 +347,8 @@ span.contact-info.pb-1 {
     height: calc( (var(--size) / 2) - 7px );;
     border-top: 7px solid var(--indicators);
 }
-.clock[data-day="PM"] .clock__indicator:nth-of-type(5n) {
-    border-top: 7px solid var(--indicatorsdark);
-}
+
+.clock[data-day="PM"] .clock__indicator:nth-of-type(5n) { border-top: 7px solid var(--indicatorsdark); }
 
 .clock__axis {
     background: var(--feature);
@@ -419,9 +359,8 @@ span.contact-info.pb-1 {
     z-index: 4;
     top: calc( (var(--size) / 2) - 3px );;
 }
-.clock[data-day="PM"] .clock__axis {
-    background: var(--featuredark);
-}
+
+.clock[data-day="PM"] .clock__axis { background: var(--featuredark); }
 
 section:nth-of-type(1) { transform: rotateZ(calc(6deg * 1)); }
 section:nth-of-type(2) { transform: rotateZ(calc(6deg * 2)); }
