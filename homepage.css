@@ -76,10 +76,7 @@
     width: 450px;
 }
 
-.poc-body {
-    background-color: #b0d5fb;
-}
-
+.poc-body { background-color: #b0d5fb; }
 .poc-card-title {
     padding: 15px 5px;
     margin: 5px;
@@ -106,25 +103,11 @@
     background-color: var(--j3Blue);
 }
 
-.text-j3blue {
-    color: var(--j3Blue) !important;
-}
-
-.bg-j3blue {
-    background-color: var(--j3Blue) !important;
-}
-
-.text-SPFooter {
-    color: var(--SPFooter) !important;
-}
-
-.bg-SPFooter {
-    background-color: var(--SPFooter) !important;
-}
-
-svg.poc {
-    color: var(--j3Blue) !important;
-}
+.text-j3blue { color: var(--j3Blue) !important; }
+.bg-j3blue { background-color: var(--j3Blue) !important; }
+.text-SPFooter { color: var(--SPFooter) !important; }
+.bg-SPFooter { background-color: var(--SPFooter) !important; }
+svg.poc { color: var(--j3Blue) !important; }
 
 .bd-callout.poc {
     border-left-color: #007bff !important;
@@ -287,6 +270,18 @@ span.contact-info.pb-1 {
     box-shadow: 2px 2px 5px #0000007a;
     margin: 10px auto;
 }
+
+.clock.clock-square { border-radius: 1em !important; }
+.clock-theme-blue { border: 5px solid var(--bs-blue) !important; }
+.clock-theme-indigo { border: 5px solid var(--bs-indigo) !important; }
+.clock-theme-purple { border: 5px solid var(--bs-purple) !important; }
+.clock-theme-pink { border: 5px solid var(--bs-pink) !important; }
+.clock-theme-red { border: 5px solid var(--bs-red) !important; }
+.clock-theme-orange { border: 5px solid var(--bs-orange) !important; }
+.clock-theme-yellow { border: 5px solid var(--bs-yellow) !important; }
+.clock-theme-green { border: 5px solid var(--bs-green) !important; }
+.clock-theme-teal { border: 5px solid var(--bs-teal) !important; }
+.clock-theme-cyan { border: 5px solid var(--bs-cyan) !important; }
 
 .clock[data-day="PM"]{
     background-color: var(--backgrounddark) !important;

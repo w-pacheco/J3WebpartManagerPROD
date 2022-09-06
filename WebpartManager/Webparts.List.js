@@ -846,6 +846,15 @@ export default [{
             ],
             DefaultView: true,
             Order: 1
+        },{
+            Title: 'CustomShape',
+            FieldTypeKind: 6,
+            Choices: [
+                'circle',
+                'square',
+            ],
+            DefaultView: true,
+            Order: 1
         }],
         predefinedData: []
     },

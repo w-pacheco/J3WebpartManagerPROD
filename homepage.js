@@ -525,18 +525,17 @@ function ShowBody(el, selector) {
                     `<div class="clock-group component-group">
                         <div class="clock-title component-title">Time Zones</div>
                         <div class="clock-body row"></div>
-            
                     </div>`
                 webpartData.forEach(data => {
 
-                    let {
-                        TimeZone,
-                        DisplayTitle
-                    } = data
-
+                    let { TimeZone, DisplayTitle, CustomTheme, CustomShape } = data;
                     let NOW;
                     let clock = document.createElement("div");
                     clock.classList.add("clock");
+                    clock.classList.add(`clock-theme-${CustomTheme}`);
+                    clock.classList.add(`clock-${CustomShape}`);
+                    if (CustomTheme) clock.classList.add(`clock-theme-${CustomTheme}`);
+                    // else console.info(CustomTheme);
                     clock.innerHTML = `<div class="clock__second"></div>
                                         <div class="clock__minute"></div>
                                         <div class="clock__hour"></div>
@@ -603,76 +602,98 @@ function ShowBody(el, selector) {
                                         <section class="clock__indicator"></section>`
 
                     var currentSec = getSecondsToday();
-
                     var seconds = (currentSec / 60) % 1;
                     var minutes = (currentSec / 3600) % 1;
                     var hours = (currentSec / 43200) % 1;
-
                     setTime(60 * seconds, "second");
                     setTime(3600 * minutes, "minute");
                     setTime(43200 * hours, "hour");
 
                     function setTime(left, hand) {
-                        clock.querySelector(".clock__" + hand).setAttribute("style", "animation-delay:" + left * -1 + "s" )
-                        //$(".clock__" + hand).css("animation-delay", "" + left * -1 + "s");
+                        return clock.querySelector(".clock__" + hand)
+                        .setAttribute("style", "animation-delay:" + left * -1 + "s" );
                     }
 
                     function getDateByTimeZone(TimeZone){
-                        let TimeZoneString = new Date().toLocaleTimeString(undefined, {timeZone: TimeZone});
-                        const [ hours, min, seconds] = TimeZoneString.split(' ')[0].split(':');
-                        let now = new Date();
-                        now.setHours(Number(hours))
-                        now.setMinutes(Number(min))
-                        now.setSeconds(Number(seconds))
-                        return now;
+                        
+                        const DateObject = new Date();
+                        const DateString = DateObject.toLocaleDateString(undefined, {
+                            timeZone: TimeZone
+                        });
+
+                        const TimeZoneString = DateObject.toLocaleTimeString(undefined, {
+                            hour12: false,
+                            timeZone: TimeZone
+                        });
+
+                        const getHoursMinSeconds = function getHoursMinSeconds(TimeStr){
+                            const [ hours, min, seconds] = TimeStr.split(' ')[0].split(':');
+                            return {
+                                hours,
+                                min,
+                                seconds,
+                            }
+                        }
+                        
+                        const { hours, min, seconds } = getHoursMinSeconds(TimeZoneString);
+                        const isAM = Number(hours) < 12;
+                        const now = new Date(DateString);
+                        now.setHours(Number(hours));
+                        now.setMinutes(Number(min));
+                        now.setSeconds(Number(seconds));
+
+                        return {
+                            now,
+                            DateString,
+                            TimeZoneString,
+                            hours, 
+                            min, 
+                            seconds,
+                            isAM,
+                        };
                     }
 
-                    function getSecondsToday(Timezone) {
-                        let TimeZoneString = new Date().toLocaleTimeString(undefined, {
+                    function getSecondsToday(Timezone){
+
+                        const DateObject = getDateByTimeZone(TimeZone);
+                        const TimeZoneString = new Date().toLocaleTimeString(undefined, {
                             hour12: false,
                             timeZone: TimeZone,
                         });
-                        // console.info(TimeZoneString, TimeZone);
-                        // console.info(new Date(TimeZoneString))
-                        const [ hours, min, seconds] = TimeZoneString.split(' ')[0].split(':');
-                        console.info([ hours, min, seconds])
-                        let now = new Date();
-                        now.setHours(Number(hours))
-                        now.setMinutes(Number(min))
-                        now.setSeconds(Number(seconds))
-                        console.info(now);
-                        NOW = now;
-
-                        clock.setAttribute('data-day', Number(hours) > 12 ? 'PM' : 'AM');
+                        
+                        const { isAM } = DateObject;
+                        const now = new Date();
+                        NOW = DateObject.now; // Sets global variable since we need it in the div.clock-Title below;
+                        clock.setAttribute('data-day', isAM ? 'AM' : 'PM');
                         clock.setAttribute('data-time-zone', TimeZone);
                         clock.setAttribute('data-time', TimeZoneString);
-
+                        clock.StartDateObject = DateObject;
+                        clock.getDateByTimeZone = getDateByTimeZone;
 
                         let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                        console.info(today)
                         let diff = now - today;
-                        console.info(diff)
                         return Math.round(diff / 1000);
                     }
 
-                    let clockTitle = document.createElement('div')
+                    let clockTitle = document.createElement('div');
                     clockTitle.classList = 'clock-Title text-center';
                     clockTitle.innerHTML = `
                     <div>${DisplayTitle}</div>
                     <div>${NOW.format('MM/dd/yyyy <br> hh:mm:ss')}</div>`                    
 
-                    let el = div.querySelector(".clock-body")
-                    const ClockOuterEl = document.createElement('div')
+                    let el = div.querySelector(".clock-body");
+                    const ClockOuterEl = document.createElement('div');
                     ClockOuterEl.classList = 'clock-outer col';
-                    ClockOuterEl.append(clock)
-                    ClockOuterEl.appendChild(clockTitle)
+                    ClockOuterEl.append(clock);
+                    ClockOuterEl.appendChild(clockTitle);
+                    el.append(ClockOuterEl);
 
-                    el.append(ClockOuterEl)
                     setInterval(function(){
-                        NOW.setSeconds(NOW.getSeconds() + 1);
-                        clockTitle.innerHTML = `
+                        const { now, isAM } = clock.getDateByTimeZone(clock.dataset.timeZone);
+                        clock.setAttribute('data-day', isAM ? 'AM' : 'PM');
+                        clockTitle.innerHTML = /*html*/`
                         <div>${DisplayTitle}</div>
-                        <div>${NOW.format('MM/dd/yyyy <br> H:mm:ss')}</div>`
+                        <div>${now.format('MM/dd/yyyy <br> H:mm:ss')}</div>`
                     }, 1000);
                 });
             }
