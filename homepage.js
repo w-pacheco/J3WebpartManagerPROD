@@ -517,6 +517,166 @@ function ShowBody(el, selector) {
 
             }
 
+            else if (type === "Clocks") {
+
+                console.log("Creating Clocks", webpartData)
+
+                div.innerHTML =
+                    `<div class="clock-group component-group">
+                        <div class="clock-title component-title">Time Zones</div>
+                        <div class="clock-body row"></div>
+            
+                    </div>`
+                webpartData.forEach(data => {
+
+                    let {
+                        TimeZone,
+                        DisplayTitle
+                    } = data
+
+                    let NOW;
+                    let clock = document.createElement("div");
+                    clock.classList.add("clock");
+                    clock.innerHTML = `<div class="clock__second"></div>
+                                        <div class="clock__minute"></div>
+                                        <div class="clock__hour"></div>
+                                        <div class="clock__axis"></div>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>
+                                        <section class="clock__indicator"></section>`
+
+                    var currentSec = getSecondsToday();
+
+                    var seconds = (currentSec / 60) % 1;
+                    var minutes = (currentSec / 3600) % 1;
+                    var hours = (currentSec / 43200) % 1;
+
+                    setTime(60 * seconds, "second");
+                    setTime(3600 * minutes, "minute");
+                    setTime(43200 * hours, "hour");
+
+                    function setTime(left, hand) {
+                        clock.querySelector(".clock__" + hand).setAttribute("style", "animation-delay:" + left * -1 + "s" )
+                        //$(".clock__" + hand).css("animation-delay", "" + left * -1 + "s");
+                    }
+
+                    function getDateByTimeZone(TimeZone){
+                        let TimeZoneString = new Date().toLocaleTimeString(undefined, {timeZone: TimeZone});
+                        const [ hours, min, seconds] = TimeZoneString.split(' ')[0].split(':');
+                        let now = new Date();
+                        now.setHours(Number(hours))
+                        now.setMinutes(Number(min))
+                        now.setSeconds(Number(seconds))
+                        return now;
+                    }
+
+                    function getSecondsToday(Timezone) {
+                        let TimeZoneString = new Date().toLocaleTimeString(undefined, {
+                            hour12: false,
+                            timeZone: TimeZone,
+                        });
+                        // console.info(TimeZoneString, TimeZone);
+                        // console.info(new Date(TimeZoneString))
+                        const [ hours, min, seconds] = TimeZoneString.split(' ')[0].split(':');
+                        console.info([ hours, min, seconds])
+                        let now = new Date();
+                        now.setHours(Number(hours))
+                        now.setMinutes(Number(min))
+                        now.setSeconds(Number(seconds))
+                        console.info(now);
+                        NOW = now;
+
+                        clock.setAttribute('data-day', Number(hours) > 12 ? 'PM' : 'AM');
+                        clock.setAttribute('data-time-zone', TimeZone);
+                        clock.setAttribute('data-time', TimeZoneString);
+
+
+                        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                        console.info(today)
+                        let diff = now - today;
+                        console.info(diff)
+                        return Math.round(diff / 1000);
+                    }
+
+                    let clockTitle = document.createElement('div')
+                    clockTitle.classList = 'clock-Title text-center';
+                    clockTitle.innerHTML = `
+                    <div>${DisplayTitle}</div>
+                    <div>${NOW.format('MM/dd/yyyy <br> hh:mm:ss')}</div>`                    
+
+                    let el = div.querySelector(".clock-body")
+                    const ClockOuterEl = document.createElement('div')
+                    ClockOuterEl.classList = 'clock-outer col';
+                    ClockOuterEl.append(clock)
+                    ClockOuterEl.appendChild(clockTitle)
+
+                    el.append(ClockOuterEl)
+                    setInterval(function(){
+                        NOW.setSeconds(NOW.getSeconds() + 1);
+                        clockTitle.innerHTML = `
+                        <div>${DisplayTitle}</div>
+                        <div>${NOW.format('MM/dd/yyyy <br> H:mm:ss')}</div>`
+                    }, 1000);
+                });
+            }
+
         }).catch(e => {
             console.log("Error getting webpart list: \n", e)
         })
