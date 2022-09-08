@@ -662,13 +662,15 @@ function ShowBody(el, selector) {
                         });
                         
                         const { isAM } = DateObject;
-                        const now = new Date();
+                        let now = new Date();
                         NOW = DateObject.now; // Sets global variable since we need it in the div.clock-Title below;
                         clock.setAttribute('data-day', isAM ? 'AM' : 'PM');
                         clock.setAttribute('data-time-zone', TimeZone);
                         clock.setAttribute('data-time', TimeZoneString);
                         clock.StartDateObject = DateObject;
                         clock.getDateByTimeZone = getDateByTimeZone;
+
+                        now = DateObject.now;
 
                         let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
                         let diff = now - today;
