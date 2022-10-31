@@ -47,7 +47,7 @@ var _slicedToArray = function () {
 
         function ModifyHeader(HeaderEl) {
             if (!HeaderEl) throw new Error('Missing container element!');
-            /*JoePC*/ // $(HeaderEl)?.fadeOut()?.hide();
+            /*JoePC*/$(HeaderEl) && $(HeaderEl).fadeOut() && $(HeaderEl).fadeOut().hide();
             SP_HEADER.setAttribute('style', 'padding-left: 20px !important;');
             var StyleEl = document.createElement('style');
             StyleEl.innerText = /*css*/'\n            /* Header image elements */\n            img {\n                border: none;\n                float: left;\n            }\n    \n            /* Hides the links above the search bar */\n            div#_hdrlinks,\n            #s4-bodyContainer > div.CompleteArea > header > div.hdrimagesection,\n            #s4-bodyContainer > div.CompleteArea > header > div.hdrmidoutersection { \n                display: none; \n            }\n    \n            /* Header Element */\n            #s4-bodyContainer > div.CompleteArea > header {\n                background: rgba(56, 65, 122, 1);\n                background: linear-gradient(72deg, rgba(56, 65, 122, 1) 0%, rgb(30 30 30) 100%);\n                border-radius: 0.25rem;\n            }\n    \n            header {\n                background-color: white;\n                padding-left: 50px;\n                line-height: 85px;\n                min-height: 90px;\n                position:relative;\n                height: unset;\n            }\n            \n            h1#doc-title {\n                max-width: calc( 100vw - 581px);\n                line-height: 50px;\n                padding-top: 20px;\n                position: inherit !important;\n            }\n            \n            .hdrsearchsection {\n                position: absolute;\n                top: 0px;\n                right: 0px;\n                float: right;\n                display: table-cell;\n                padding-top: 15px;\n                padding-right: 40px;\n                line-height: 75px;\n                width: 265px;\n            }\n    \n            /* Search Box Container */\n            [data-name="SearchBox"] {\n                position: absolute;\n                transform: translate(2%, -95%);\n            }\n            .ms-srch-sb-border {\n                background-color: inherit;\n                border: none;\n                transition: 0.5s;\n            }\n            .ms-srch-sb-border:hover {\n                border: none;\n            }\n    \n            /* Search Input Element used on stg16.info.health.mil */\n            input#ctl00_ctl53_csr_sbox{\n                border-radius: 29.5px !important;\n                background-color: #ffffff;\n                padding: 12px;\n            }\n\n            /* Search Input Element used on info.health.mil */\n            input#ctl00_ctl52_csr_sbox {\n                border-radius: 29.5px !important;\n                background-color: #ffffff;\n                padding: 4px 12px;\n            }';
@@ -58,7 +58,7 @@ var _slicedToArray = function () {
 
             var H1ELEMENT = HeaderEl.querySelector('h1#doc-title');
             $(H1ELEMENT).hide();
-            /*JoePC*/ //           $(HeaderEl)?.fadeIn();
+            /*JoePC*/$(HeaderEl) && $(HeaderEl).fadeIn();
 
             /** updateText is a method used to update the innerText of this element with the required title; */
             HeaderEl.updateText = function updateText(headerStr) {
